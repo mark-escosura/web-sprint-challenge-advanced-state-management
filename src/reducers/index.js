@@ -1,8 +1,48 @@
+import { FETCH_START, FETCH_SUCCESS, FETCH_ERROR } from './../actions/index'
 
-export const initialState = {
+export const initialState = { // set as state in reducer
+    smurfs: [{
+        id:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+        name:'Poppa Smurf',
+        position:'Village Leader',
+        nickname: 'Pops',
+        description: 'Papa is the practical village leader and the father figure of 100 or so young Smurfs. He is easily identified by his red Smurf hat, pants, and a shortly-trimmed white beard and moustache.'
+      }],
+    isFetching: true,
+    error: ""
 }
 
-const reducer = ()=>{
+const reducer = (state = initialState, action) => {
+
+    switch(action.type) {
+
+        case(FETCH_START):
+            return({
+                ...state,
+                smurfs: [],
+                isFetching: true,
+                error: ""
+            })
+
+        case(FETCH_SUCCESS):
+            return({
+                ...state,
+                smurfs: action.payload,
+                isFetching: false,
+                error: ""
+            })
+
+        case(FETCH_ERROR):
+            return({
+                ...state,
+                smurfs: action.payload,
+                isFetching: false,
+                error: ""
+            })
+
+            default:
+                return state
+    }
 }
 
 //**************DO NOT EDIT ANY CODE BEYOND THIS POINT**************//
