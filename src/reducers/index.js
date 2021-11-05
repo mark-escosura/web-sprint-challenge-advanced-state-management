@@ -1,13 +1,7 @@
-import { FETCH_START, FETCH_SUCCESS, FETCH_ERROR } from './../actions/index'
+import { FETCH_START, FETCH_SUCCESS, FETCH_ERROR, ADD_SMURF, SET_ERROR } from './../actions/index'
 
 export const initialState = { // set as state in reducer
-    smurfs: [{
-        id:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
-        name:'Poppa Smurf',
-        position:'Village Leader',
-        nickname: 'Pops',
-        description: 'Papa is the practical village leader and the father figure of 100 or so young Smurfs. He is easily identified by his red Smurf hat, pants, and a shortly-trimmed white beard and moustache.'
-      }],
+    smurfs: [{}],
     isFetching: true,
     error: ""
 }
@@ -20,16 +14,14 @@ const reducer = (state = initialState, action) => {
             return({
                 ...state,
                 smurfs: [],
-                isFetching: true,
-                error: ""
+                isFetching: true
             })
 
         case(FETCH_SUCCESS):
             return({
                 ...state,
                 smurfs: action.payload,
-                isFetching: false,
-                error: ""
+                isFetching: false
             })
 
         case(FETCH_ERROR):
@@ -38,6 +30,18 @@ const reducer = (state = initialState, action) => {
                 smurfs: action.payload,
                 isFetching: false,
                 error: ""
+            })
+
+        case(ADD_SMURF):
+            return({
+                ...state,
+                smurfs: [...state.smurfs, action.payload]
+            })
+
+        case(SET_ERROR):
+            return({
+                ...state,
+                error: action.payload
             })
 
             default:
