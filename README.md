@@ -87,7 +87,7 @@ In this project, you will build the reducer, actions and basic redux connects ne
   * [x] Connect your error state slice, setError and addSmurf actions to the AddForm component.
   * [x] Replace all instances of the errorMessage static variable with your error message state slice. 
   * [x] Within the handleSubmit function, replace the static assignment to errorMessage with a call to the setError action. Test that an error is displayed when validation code fails.
-  * [x] Within the handleSubmit function, call your addSmurf action with the smurf name, position, nickname and summury passed as arguments. Test that a smurf is correctly added to when the form is submitted.
+  * [x] Within the handleSubmit function, call your addSmurf action with the smurf name, position, nickname and summary passed as arguments. Test that a smurf is correctly added to when the form is submitted.
 
 ## Important Notes:
 
@@ -110,11 +110,19 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. What problem does the context API help solve?
 
+* Context API provides a way to share values like these between components without having to explicitly pass a prop through every level of the tree.
+
 2. In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+* Actions - Actions are the only source of information for the store.
+* Reducers - a reducer is a pure function that takes an action and the previous state of the application and returns the new state. 
+* Store - A store holds the whole state tree of your application. The only way to change the state inside it is to dispatch an action on it.
 
 3. What does `redux-thunk` allow us to do? How does it change our `action-creators`?
 
+* Redux Thunk middleware allows you to write action creators that return a function instead of an action.
+* The 'action-creator" is changed by returning a function that performs a conditional dispatch
+
 4. What is your favorite state management system you've learned and this sprint? Please explain why!
 
-
-dispatch error 2 times when the axios fails and validation fails
+* Redux. Makes prop drilling easier when it comes to using/reusing components.
