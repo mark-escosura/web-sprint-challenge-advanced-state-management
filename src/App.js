@@ -1,12 +1,12 @@
+// Dependencies
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-
-
+// Actions
+import { fetchSmurfs } from "./actions"; // imported fetchSmurfs action to App component 
+// Components
 import AddForm from './components/AddForm';
 import SmurfList from './components/SmurfList';
 import Header from './components/Header';
-
-import { fetchSmurfs } from "./actions"; // imported fetchSmurfs action to App component 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
@@ -14,7 +14,7 @@ import "./App.css";
 class App extends Component {
 
   componentDidMount() { // how does this work?
-    this.props.dispatch(fetchSmurfs()) 
+    this.props.dispatch(fetchSmurfs())
   }
 
   render() {  

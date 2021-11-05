@@ -1,8 +1,8 @@
 import { FETCH_START, FETCH_SUCCESS, FETCH_ERROR, ADD_SMURF, SET_ERROR } from './../actions/index'
 
 export const initialState = { // set as state in reducer
-    smurfs: [{}],
-    isFetching: true,
+    smurfs: [],
+    isLoading: true,
     error: ""
 }
 
@@ -14,21 +14,21 @@ const reducer = (state = initialState, action) => {
             return({
                 ...state,
                 smurfs: [],
-                isFetching: true
+                isLoading: true
             })
 
         case(FETCH_SUCCESS):
             return({
                 ...state,
                 smurfs: action.payload,
-                isFetching: false
+                isLoading: false
             })
 
         case(FETCH_ERROR):
             return({
                 ...state,
                 smurfs: action.payload,
-                isFetching: false,
+                isLoading: false,
                 error: ""
             })
 
